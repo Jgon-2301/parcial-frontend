@@ -1,1 +1,30 @@
-<p>contratos-lista works!</p>
+<div class="contratos-container">
+    <h1>Lista de Contratos</h1>
+    <button class="crear-btn" routerLink="/contrato">Crear Nuevo Contrato</button>
+
+    <table class="tabla-contratos">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Identificador</th>
+                <th>Valor</th>
+                <th>Contratante</th>
+                <th>Contratantista</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contrato of contratos">
+                <td>{{ contrato.id }}</td>
+                <td>{{ contrato.identificador }}</td>
+                <td>{{ contrato.valor | currency }}</td>
+                <td>{{ contrato.nombreContratante }}</td>
+                <td>{{ contrato.nombreContratantista }}</td>
+                <td>
+                    <button class="editar-btn" [routerLink]="['/contrato', contrato.id]">Editar</button>
+                    <button class="eliminar-btn" (click)="eliminar(contrato.id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
